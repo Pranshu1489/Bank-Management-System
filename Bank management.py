@@ -2,11 +2,9 @@ import os
 import platform
 import mysql.connector
 import pandas as pd
-mydb=mysql.connector.connect(host="localhost",\
-user="root",\
-password="123456",\
-database="Bank")
+mydb=mysql.connector.connect(host="localhost",user="root",passwd=" #mrverma1489", database="Bank")
 mycursor=mydb.cursor()
+
 def AccInsert():
     L=[]
     Accno=int(input("Enter the Account number : "))
@@ -76,6 +74,7 @@ def closeAcc():
                               print(Accno,"Suuccessfuly deleted")
                               mydb.commit()
                abcd()
+            
 def MenuSet():  
     print("Enter 1 : To Add Customer")
     print("Enter 2 : To Deposit Money   ")
@@ -101,14 +100,22 @@ def MenuSet():
     else:
         print("Enter correct choice. . . ")
     MenuSet()
+    
 def runAgain():
     runAgn = input("\nwant To Run Again Y/n: ")
+    
     while(runAgn.lower() == 'y'):
+        
         if(platform.system() == "Windows"):
             print(os.system('cls'))
+            
         else:
             print(os.system('clear'))
+            
     MenuSet()
+    
     runAgn = input("\nwant To Run Again Y/n: ")
+    
     runAgain()
+    
 MenuSet()
